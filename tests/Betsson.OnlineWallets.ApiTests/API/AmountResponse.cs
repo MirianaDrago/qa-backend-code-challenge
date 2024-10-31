@@ -1,4 +1,4 @@
 public class AmountResponse
 {
-    public int Amount { get; set; }
+    public decimal Amount { get; set; }
 }

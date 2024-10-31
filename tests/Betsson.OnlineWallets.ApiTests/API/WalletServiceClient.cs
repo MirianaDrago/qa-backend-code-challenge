@@ -21,7 +21,7 @@ public class WalletServiceClient {
         return JsonConvert.DeserializeObject<AmountResponse>(content);
     }
 
-    public AmountResponse Deposit(int amount)
+    public AmountResponse Deposit(decimal amount)
     {
         var request = new { amount };
         var content = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
@@ -31,7 +31,7 @@ public class WalletServiceClient {
         return JsonConvert.DeserializeObject<AmountResponse>(responseBody);
     }
 
-    public AmountResponse Withdraw(int amount)
+    public AmountResponse Withdraw(decimal amount)
     {
         var request = new { amount };
         var content = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
