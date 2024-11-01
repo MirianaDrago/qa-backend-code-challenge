@@ -58,6 +58,26 @@ public class WalletAPITests
     }
 
     [Test]
+    public void Deposit_ZeroAmount_ShouldBeSuccessful()
+    {
+        int amount = 0;
+        var initialBalance = _client.GetBalance();
+        var afterDeposit = _client.Deposit(amount);
+        
+        Assert.That(afterDeposit.Amount, Is.EqualTo(initialBalance.Amount), "Balance should remain the same after attempting a zero deposit.");
+    }
+
+    [Test]
+    public void Withdraw_ZeroAmount_ShouldBeSuccessful()
+    {
+        int amount = 0;
+        var initialBalance = _client.GetBalance();
+        var afterWithdrawal = _client.Withdraw(amount);
+        
+        Assert.That(afterWithdrawal.Amount, Is.EqualTo(initialBalance.Amount), "Balance should remain the same after attempting a zero withdrawal.");
+    }
+
+    [Test]
     public void Withdraw_InsufficientBalance_ShouldFail()
     {
         var balance = _client.GetBalance();
