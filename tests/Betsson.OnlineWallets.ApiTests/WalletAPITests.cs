@@ -6,7 +6,6 @@ using NUnit.Framework;
 public class WalletAPITests
 {
     private WalletServiceClient _client;
-    private ApiConfiguration _config;
 
     [SetUp]
     public void Setup()
