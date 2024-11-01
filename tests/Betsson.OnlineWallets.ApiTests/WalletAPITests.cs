@@ -1,16 +1,22 @@
 namespace Betsson.OnlineWallets.ApiTests;
 
-using System.Diagnostics;
+using System.Text.Json;
 using NUnit.Framework;
 
 public class WalletAPITests
 {
     private WalletServiceClient _client;
+    private ApiConfiguration _config;
 
     [SetUp]
     public void Setup()
     {
-        _client = new WalletServiceClient("http://localhost:5001");
+        // Read and parse settings.json into ApiConfiguration
+        var jsonPath = Path.Combine(Directory.GetCurrentDirectory(), "settings.json");
+        var json = File.ReadAllText(jsonPath);
+        var config = JsonSerializer.Deserialize<ApiConfiguration>(json);
+        
+        _client = new WalletServiceClient(config.ApiBaseUrl);
     }
 
     [Test]
