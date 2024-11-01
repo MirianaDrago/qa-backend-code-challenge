@@ -21,3 +21,14 @@ docker run -p <port>:8080 <image id>
 ```
 http://localhost:<port>/swagger/index.html
 ```
+
+### API tests configuration
+
+- Change ApiBaseUrl in settings.json file under ApiTests project in order to be able to run API tests according to url set
+
+### Run tests through CLI
+
+```
+dotnet test
+```
+
